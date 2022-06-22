@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:BurgerSpotXamarin.ViewModels"
+             x:Class="BurgerSpotXamarin.Views.DetailsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:DetailsViewModel></vm:DetailsViewModel>
+    </ContentPage.BindingContext>
+    <Grid Padding="30" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Padding="0,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="20" HorizontalOptions="Start" VerticalOptions="Center">
+                <Image Source="search.webp" Aspect="AspectFit" WidthRequest="15" HeightRequest="15" />
+                <Image Source="user.png" Aspect="AspectFit" WidthRequest="15" HeightRequest="15"/>
+                <Image Source="cart.png" Aspect="AspectFit" WidthRequest="15" HeightRequest="15"/>
+            </StackLayout>
+            <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="BURGER" TextColor="Black" FontFamily="ThemeFont" FontSize="25" HorizontalOptions="Center"/>
+                <Label Text="SPOT" TextColor="Black" Opacity="0.5" FontFamily="LightFont" FontSize="12" HorizontalOptions="End"/>
+            </StackLayout>
+        </Grid>
+        <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand">
+            <Grid RowSpacing="50" HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Start">
+                    <Label Grid.Row="1" Text="{Binding SelectedBurger.Price, StringFormat='${0}'}" TextColor="#F9B522" FontFamily="ThemeFont"
+                               VerticalOptions="End" HorizontalOptions="Start"/>
+                    <Label Grid.Row="1" Text="LIMITED TIME OFFER!" TextColor="Black" FontFamily="LightFont" Opacity="0.75" FontSize="12"
+                               HorizontalOptions="Center"/>
+                </StackLayout>
+                <CarouselView Grid.Row="1" ItemsSource="{Binding Burgers}" HeightRequest="260" HorizontalOptions="FillAndExpand"
+                              CurrentItem="{Binding SelectedBurger}" IsScrollAnimated="True" IsSwipeEnabled="True">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalOptions="FillAndExpand">
+
+                                <Image Source="{Binding Image}" Aspect="Fill" Margin="0,-50,0,0" HeightRequest="210"
+                                       WidthRequest="235" HorizontalOptions="Center" VerticalOptions="End"/>
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="40" Margin="0" FontFamily="ThemeFont" 
+                                       HorizontalOptions="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </Grid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

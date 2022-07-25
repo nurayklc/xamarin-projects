@@ -3,6 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.App">
     <Application.Resources>
+        <ResourceDictionary>
 
+            <!-- Colors -->
+            <Color x:Key="ColdStartColor">#BDE3FA</Color>
+            <Color x:Key="ColdEndColor">#A5C9FD</Color>
+            <Color x:Key="WarmStartColor">#F6CC66</Color>
+            <Color x:Key="WarmEndColor">#FCA184</Color>
+            <Color x:Key="NightStartColor">#172941</Color>
+            <Color x:Key="NightEndColor">#3C6683</Color>
+            <Color x:Key="MainTextColor">White</Color>
+
+            <!-- Implicit styles -->
+            <Style TargetType="{x:Type Label}" x:Key="LabelWeatherSyle">
+                <Setter Property="FontSize" Value="100" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource MainTextColor}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
